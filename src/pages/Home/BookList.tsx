@@ -12,7 +12,7 @@ import Error from "../../components/Loading/Error";
 import Loading from "../../components/Loading/loading";
 import useLocalStorage from "../../utils/searchFilterStore";
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaRegSadCry } from "react-icons/fa";
+import { FaRegSadCry, FaUndo } from "react-icons/fa";
 const BookList = () => {
   const [search, setSearch] = useLocalStorage("search", "");
   const [topic, setTopic] = useLocalStorage("topic", "");
@@ -45,6 +45,12 @@ const BookList = () => {
       saveWishlistIds(updatedIds);
       return updatedIds;
     });
+  };
+
+  //======= Reset Filtering
+  const handleReset = () => {
+    setSearch("");
+    setTopic("");
   };
 
 
@@ -85,11 +91,18 @@ const BookList = () => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <FaRegSadCry className="text-6xl text-gray-400 mb-4" />
+                    <FaRegSadCry className="text-6xl text-gray-400 mb-2" />
                     <p className="text-lg font-semibold text-gray-500">
                       No Books Found !
                     </p>
                     <p className="text-gray-400">Please try again later .</p>
+                    <button
+                      onClick={handleReset}
+                      className="mt-2 flex items-center justify-center px-4 py-2 bg-primary text-white hover:bg-SecondPrimary transition"
+                    >
+                      <FaUndo className="mr-2" /> {/* Icon on the left */}
+                      Reset Filters
+                    </button>
                   </motion.div>
                 ) : (
                   <motion.div
@@ -100,7 +113,7 @@ const BookList = () => {
                     transition={{ duration: 0.5 }}
                   >
                     {
-                      data?.results.slice(0,6).map((book: TBook) => (
+                      data?.results.slice(0, 6).map((book: TBook) => (
                         <motion.div key={book.id} layout transition={{ duration: 0.3 }}>
                           <BookCard
                             book={book}

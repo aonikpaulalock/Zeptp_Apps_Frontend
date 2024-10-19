@@ -16,9 +16,8 @@ const Footer = () => {
           <div className="flex flex-col items-start">
             <ul className="space-y-4">
               <li><a href="#" className="text-base text-primary font-medium font-poppins">Home</a></li>
-              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Contest</a></li>
-              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">How it works</a></li>
-              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Articles</a></li>
+              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Book</a></li>
+              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Wishlist</a></li>
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">About us</a></li>
             </ul>
           </div>
@@ -30,7 +29,6 @@ const Footer = () => {
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Terms and Conditions</a></li>
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Support</a></li>
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">FAQ</a></li>
-              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Expert</a></li>
             </ul>
           </div>
 
@@ -38,7 +36,7 @@ const Footer = () => {
           <div className="flex flex-col items-start">
             <ul className="space-y-4">
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Team</a></li>
-              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Photographer</a></li>
+              <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Writer</a></li>
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Hire</a></li>
               <li><a href="#" className="text-base text-SecondPrimary font-normal font-poppins">Complaints</a></li>
             </ul>
