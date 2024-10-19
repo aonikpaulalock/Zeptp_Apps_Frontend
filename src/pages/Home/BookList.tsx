@@ -12,6 +12,7 @@ import Error from "../../components/Loading/Error";
 import Loading from "../../components/Loading/loading";
 import useLocalStorage from "../../utils/searchFilterStore";
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaRegSadCry } from "react-icons/fa";
 const BookList = () => {
   const [search, setSearch] = useLocalStorage("search", "");
   const [topic, setTopic] = useLocalStorage("topic", "");
@@ -47,7 +48,6 @@ const BookList = () => {
   };
 
 
-
   return (
     <div className="mb-28">
       <Container>
@@ -76,35 +76,55 @@ const BookList = () => {
           {/* ========= Book Cards Grid ========== */}
           <AnimatePresence>
             {!isLoading && !error && !isFetching && (
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {
-                  data?.results?.slice(0, 6).map((book: TBook) => (
-                    <motion.div key={book.id} layout transition={{ duration: 0.3 }}>
-                      <BookCard
-                        book={book}
-                        isWishlisted={wishlistIds.includes(book.id.toString())}
-                        toggleWishlist={toggleWishlist}
-                      />
-                    </motion.div>
-                  ))
-                }
-              </motion.div>
+              <>
+                {data?.results.length === 0 ? (
+                  <motion.div
+                    className="flex flex-col items-center justify-center py-20"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <FaRegSadCry className="text-6xl text-gray-400 mb-4" />
+                    <p className="text-lg font-semibold text-gray-500">
+                      No Books Found !
+                    </p>
+                    <p className="text-gray-400">Please try again later .</p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {
+                      data?.results.slice(0,6).map((book: TBook) => (
+                        <motion.div key={book.id} layout transition={{ duration: 0.3 }}>
+                          <BookCard
+                            book={book}
+                            isWishlisted={wishlistIds.includes(book.id.toString())}
+                            toggleWishlist={toggleWishlist}
+                          />
+                        </motion.div>
+                      ))
+                    }
+                  </motion.div>
+                )}
+              </>
             )}
           </AnimatePresence>
 
           {/* ========== Pagination Components ======== */}
-          <BookPagination
-            currentPage={currentPage}
-            nextPage={data?.next}
-            previousPage={data?.previous}
-            setCurrentPage={setCurrentPage}
-          />
+          {data?.results.length > 0 && (
+            <BookPagination
+              currentPage={currentPage}
+              nextPage={data?.next}
+              previousPage={data?.previous}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
         </div>
       </Container>
     </div>

@@ -3,7 +3,7 @@ import { useGetAllBooksQuery } from "../../redux/bookApi/bookApi";
 import Container from "../../components/Container/Container";
 import shape from "../../assets/shape.png"
 import { TBook } from "../../types";
-import { FaInfoCircle } from "react-icons/fa";
+import { FaInfoCircle, FaRegSadCry } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/loading";
 const Wishlist = () => {
@@ -40,9 +40,27 @@ const Wishlist = () => {
                 <th className="py-3 px-6 text-left">Actions</th>
               </tr>
             </thead>
+            {/* ======== Wishlist Tablebody =========== */}
             <tbody className="text-gray-600 text-sm font-light">
               {isLoading ? (
-                <Loading />
+                <tr>
+                  <td colSpan={5} className="text-center">
+                    <div className="flex flex-col items-center">
+                      <Loading />
+                    </div>
+                  </td>
+                </tr>
+              ) : savedWishlistIds.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="py-3 px-6 text-center">
+                    <div className="flex flex-col items-center">
+                      <FaRegSadCry className="text-6xl text-gray-400 mb-2" />
+                      <p className="text-gray-500 text-lg font-semibold">
+                        No books added to wishlist
+                      </p>
+                    </div>
+                  </td>
+                </tr>
               ) : data?.results.length > 0 ? (
                 data.results.map((book: TBook) => (
                   <tr key={book.id} className="border-b border-gray-200 hover:bg-gray-50">
@@ -70,7 +88,7 @@ const Wishlist = () => {
               ) : (
                 <tr>
                   <td colSpan={5} className="py-3 px-6 text-center text-gray-500">
-                    No books in wishlist
+                    No books found
                   </td>
                 </tr>
               )}
