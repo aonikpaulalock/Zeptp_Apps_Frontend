@@ -64,7 +64,7 @@ const BookList = () => {
               <p className="mb-1 text-base font-bold text-[#81BAE3]">Let's something about us</p>
               <img src={shape} alt="" className="mx-auto" />
             </div>
-            <h1 className="text-4xl font-bold text-primary mt-1">Find your favorite contest</h1>
+            <h1 className="text-4xl font-bold text-primary mt-1">Find your favorite book</h1>
           </div>
 
           {/* ====== Search Bar ======== */}
