@@ -7,7 +7,7 @@ const SearchBar = ({ setSearch }: { setSearch: React.Dispatch<React.SetStateActi
         <input
           type="text"
           placeholder="Search your contest" className="bg-[#f5eaee] pl-8 sm:pl-12 p-5 sm:p-6 w-full outline-0 text-base placeholder-black font-poppins "
-          onBlur={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <FaSearch className="absolute left-2 sm:left-5 top-6 sm:top-7 text-gray-900" />
       </div>

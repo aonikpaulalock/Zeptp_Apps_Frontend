@@ -22,7 +22,7 @@ const BookList = () => {
     page: currentPage,
   };
 
-  const { data, isLoading, error } = useGetAllBooksQuery(query);
+  const { data, isLoading, isFetching, error } = useGetAllBooksQuery(query);
 
   // Unique subjects
   const subjects = [...new Set(data?.results?.flatMap((book: TBook) => book.subjects))];
@@ -66,13 +66,13 @@ const BookList = () => {
           <FilterButtons topic={topic} subjects={subjects as string[]} setTopic={setTopic} />
 
           {/* Loading State */}
-          {isLoading && <Loading />}
+          {(isLoading || isFetching) && <Loading />}
 
           {/* Error State */}
           {error && <Error />}
 
           {/* Contest Cards Grid */}
-          {!isLoading && !error && (
+          {!isLoading && !error && !isFetching && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
@@ -86,15 +86,15 @@ const BookList = () => {
                   ))
                 }
               </div>
-              {/* Pagination Components */}
-              <BookPagination
-                currentPage={currentPage}
-                nextPage={data?.next}
-                previousPage={data?.previous}
-                setCurrentPage={setCurrentPage}
-              />
             </>
           )}
+          {/* Pagination Components */}
+          <BookPagination
+            currentPage={currentPage}
+            nextPage={data?.next}
+            previousPage={data?.previous}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </Container>
     </div>
