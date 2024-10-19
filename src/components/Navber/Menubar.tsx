@@ -3,7 +3,9 @@ import { IStateProps } from "../../types";
 const Menubar = ({
   isMenuOpen,
   setIsMenuOpen
-}: IStateProps) => {
+}:
+  IStateProps
+) => {
   return (
     <button
       className="block md:hidden focus:outline-none"

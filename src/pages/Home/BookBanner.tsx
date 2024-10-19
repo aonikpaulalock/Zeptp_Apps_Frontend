@@ -5,7 +5,7 @@ const BookBanner = () => {
     <div className="bg-custom-gradient bg-cover bg-center p-6 md:p-8 mb-10">
       <Container>
         <div className="flex flex-col-reverse md:flex-row items-center justify-between">
-          {/* Text Section */}
+          {/* =======  Text Section ========== */}
           <div className="text-white text-left md:w-2/4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-5">
               Welcome to our
@@ -21,7 +21,7 @@ const BookBanner = () => {
             </button>
           </div>
 
-          {/* Image Section */}
+          {/* ===== Image Section ======= */}
           <div className="w-full mb-8 md:mb-0 md:w-2/4">
             <img
               src={image}

@@ -10,9 +10,11 @@ import { getWishlistIds, saveWishlistIds } from "../../utils/wishlistHelpers";
 import { TBook } from "../../types";
 import Error from "../../components/Loading/Error";
 import Loading from "../../components/Loading/loading";
+import useLocalStorage from "../../utils/searchFilterStore";
+import { motion, AnimatePresence } from 'framer-motion';
 const BookList = () => {
-  const [search, setSearch] = useState("");
-  const [topic, setTopic] = useState("");
+  const [search, setSearch] = useLocalStorage("search", "");
+  const [topic, setTopic] = useLocalStorage("topic", "");
   const [currentPage, setCurrentPage] = useState(1);
   const [wishlistIds, setWishlistIds] = useState<string[]>([]);
 
@@ -50,7 +52,7 @@ const BookList = () => {
     <div className="mb-28">
       <Container>
         <div className="mx-auto p-6">
-          {/* Header Section */}
+          {/* ======= Header Section ========= */}
           <div className="text-center mb-8">
             <div>
               <p className="mb-1 text-base font-bold text-[#81BAE3]">Let's something about us</p>
@@ -59,36 +61,44 @@ const BookList = () => {
             <h1 className="text-4xl font-bold text-primary mt-1">Find your favorite contest</h1>
           </div>
 
-          {/* Search Bar */}
+          {/* ====== Search Bar ======== */}
           <SearchBar setSearch={setSearch} />
 
-          {/* Filter Buttons */}
+          {/* ======== Filter Buttons ========= */}
           <FilterButtons topic={topic} subjects={subjects as string[]} setTopic={setTopic} />
 
-          {/* Loading State */}
+          {/* ======== Loading State ========== */}
           {(isLoading || isFetching) && <Loading />}
 
-          {/* Error State */}
+          {/* ========= Error State ======== */}
           {error && <Error />}
 
-          {/* Contest Cards Grid */}
-          {!isLoading && !error && !isFetching && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* ========= Book Cards Grid ========== */}
+          <AnimatePresence>
+            {!isLoading && !error && !isFetching && (
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 {
-                  data?.results?.slice(2, 8).map((book: TBook) => (
-                    <BookCard
-                      key={book.id}
-                      book={book}
-                      isWishlisted={wishlistIds.includes(book.id.toString())}
-                      toggleWishlist={toggleWishlist}
-                    />
+                  data?.results?.slice(0, 6).map((book: TBook) => (
+                    <motion.div key={book.id} layout transition={{ duration: 0.3 }}>
+                      <BookCard
+                        book={book}
+                        isWishlisted={wishlistIds.includes(book.id.toString())}
+                        toggleWishlist={toggleWishlist}
+                      />
+                    </motion.div>
                   ))
                 }
-              </div>
-            </>
-          )}
-          {/* Pagination Components */}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* ========== Pagination Components ======== */}
           <BookPagination
             currentPage={currentPage}
             nextPage={data?.next}

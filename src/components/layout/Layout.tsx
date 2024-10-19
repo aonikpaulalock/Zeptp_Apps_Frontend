@@ -4,7 +4,9 @@ import Header from "../shared/Header";
 
 const Layout = ({
   children,
-}: LayoutProps) => {
+}:
+  LayoutProps
+) => {
   return (
     <>
       <Header />

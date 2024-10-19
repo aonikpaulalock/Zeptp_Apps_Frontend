@@ -1,7 +1,11 @@
-import { TTopicState } from "../../types/bookType";
+import { TTopicState } from "../../types";
 
 
-const FilterButtons = ({ topic, subjects, setTopic }: TTopicState) => {
+
+const FilterButtons = ({
+  topic, subjects, setTopic
+}: TTopicState
+) => {
   return (
     <div className="flex justify-center mb-10 sm:mb-12 lg:mb-20 w-full overflow-hidden">
       <select

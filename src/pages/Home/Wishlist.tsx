@@ -20,6 +20,7 @@ const Wishlist = () => {
   return (
     <div className="my-10">
       <Container>
+        {/* ======== Wishlist Heading =========== */}
         <div className="text-center my-8">
           <div>
             <p className="mb-1 text-base font-bold text-[#81BAE3]">Wishlist</p>
@@ -27,7 +28,7 @@ const Wishlist = () => {
           </div>
           <h1 className="text-4xl font-bold text-primary mt-1">Find your favorite wishlist</h1>
         </div>
-
+        {/* ======== Wishlist table =========== */}
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 cursor-pointer">
             <thead>

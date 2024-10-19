@@ -1,6 +1,9 @@
 import { FaSearch } from "react-icons/fa";
 
-const SearchBar = ({ setSearch }: { setSearch: React.Dispatch<React.SetStateAction<string>> }) => {
+const SearchBar = (
+  { setSearch }:
+    { setSearch: React.Dispatch<React.SetStateAction<string>> }
+) => {
   return (
     <div className="flex justify-center mb-14">
       <div className="relative w-full sm:w-2/3 md:w-1/2 lg:w-1/2">

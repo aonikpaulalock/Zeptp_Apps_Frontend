@@ -31,3 +31,10 @@ export type TBookCard = {
   isWishlisted: boolean;
   toggleWishlist: (id: string) => void
 }
+
+export interface TPaginationProps {
+  currentPage: number;
+  nextPage: string | null;
+  previousPage: string | null;
+  setCurrentPage: (page: number) => void;
+}

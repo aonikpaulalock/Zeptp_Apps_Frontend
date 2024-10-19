@@ -3,9 +3,9 @@ import Avatar from "../../assets/Ellipse 1.png"
 const NavIcon = () => {
   return (
     <div className="flex items-center space-x-7">
-      {/* Notification Icon */}
+      {/* =====  Notification Icon ====== */}
       <FaBell color="#F582AE" className="cursor-pointer hidden sm:block w-5 h-5" />
-      {/* User Avatar */}
+      {/* ======  User Avatar ======== */}
       <div>
         <img
           src={Avatar}

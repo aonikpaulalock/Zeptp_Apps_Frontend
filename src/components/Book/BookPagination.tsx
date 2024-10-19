@@ -1,16 +1,14 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-interface PaginationProps {
-  currentPage: number;
-  nextPage: string | null;
-  previousPage: string | null;
-  setCurrentPage: (page: number) => void;
-}
+import { TPaginationProps } from "../../types";
+
 const BookPagination = ({
   currentPage,
   nextPage,
   previousPage,
   setCurrentPage,
-}: PaginationProps) => {
+}: TPaginationProps
+) => {
+
   const handleNext = () => {
     if (nextPage) {
       setCurrentPage(currentPage + 1);
@@ -22,6 +20,7 @@ const BookPagination = ({
       setCurrentPage(currentPage - 1);
     }
   };
+
   return (
     <div className="flex justify-end items-center mt-8 md:mt-16 ">
       <button
