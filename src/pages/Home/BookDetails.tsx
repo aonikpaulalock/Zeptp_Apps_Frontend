@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetSingleBookQuery } from "../../redux/bookApi/bookApi";
 import Container from "../../components/Container/Container";
 import shape from "../../assets/shape.png";
-import Loading from "../../components/Loading/loading";
+import Loading from "../../components/Loading/Loading";
 
 const BookDetails = () => {
   const { id } = useParams();

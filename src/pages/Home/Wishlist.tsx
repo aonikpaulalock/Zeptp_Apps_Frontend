@@ -5,7 +5,7 @@ import shape from "../../assets/shape.png"
 import { TBook } from "../../types";
 import { FaInfoCircle, FaRegSadCry } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading/loading";
+import Loading from "../../components/Loading/Loading";
 const Wishlist = () => {
   const savedWishlistIds = getWishlistIds();
   const ids = savedWishlistIds.join(',');

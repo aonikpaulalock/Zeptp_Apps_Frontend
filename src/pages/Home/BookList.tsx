@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { getWishlistIds, saveWishlistIds } from "../../utils/wishlistHelpers";
 import { TBook } from "../../types";
 import Error from "../../components/Loading/Error";
-import Loading from "../../components/Loading/loading";
+import Loading from "../../components/Loading/Loading";
 import useLocalStorage from "../../utils/searchFilterStore";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRegSadCry, FaUndo } from "react-icons/fa";
